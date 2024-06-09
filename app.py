@@ -1,6 +1,7 @@
 import os
 from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
 from essig_ai import ChatBot, ChatBotError
+from waitress import serve
 from dotenv import load_dotenv
 
 
@@ -51,4 +52,6 @@ def chat():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True, port=3000)
+   
+   print("the server is listening on port 5000")
+   serve(app, host='0.0.0.0', port=5000)
